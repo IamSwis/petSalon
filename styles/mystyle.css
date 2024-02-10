@@ -1,0 +1,76 @@
+/*global*/
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Architects Daughter', cursive;
+}
+img{
+    max-width: 100%;
+}
+a{
+    text-decoration: none;
+}
+/*utilities*/
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8rem;
+
+}
+/*header*/
+.site-init{
+    background-color: #A60505;
+    height: 15rem;
+}
+/*main*/
+
+/*welcome*/
+.welcome-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.welcome-img{
+    background-color: #BFBFBF;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-img img{
+    display: block;
+    width: 20rem;
+    border-radius: 20px;
+}
+/*services*/
+
+/*footer*/ 
+.site-footer{
+    background-color: #F23D3D;
+    height: 10rem;
+}
+
+/*Color Pallete*/
+/* Color Theme Swatches in Hex */
+.Portfolio-Website-1-hex { color: #A60505; }
+.Portfolio-Website-2-hex { color: #F20F0F; }
+.Portfolio-Website-3-hex { color: #F23D3D; }
+.Portfolio-Website-4-hex { color: #BFBFBF; }
+.Portfolio-Website-5-hex { color: #0D0D0D; }
+
+/* Color Theme Swatches in RGBA */
+.Portfolio-Website-1-rgba { color: rgba(165, 4, 4, 1); }
+.Portfolio-Website-2-rgba { color: rgba(242, 14, 14, 1); }
+.Portfolio-Website-3-rgba { color: rgba(242, 60, 60, 1); }
+.Portfolio-Website-4-rgba { color: rgba(191, 191, 191, 1); }
+.Portfolio-Website-5-rgba { color: rgba(12, 12, 12, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Portfolio-Website-1-hsla { color: hsla(0, 94, 33, 1); }
+.Portfolio-Website-2-hsla { color: hsla(0, 89, 50, 1); }
+.Portfolio-Website-3-hsla { color: hsla(0, 87, 59, 1); }
+.Portfolio-Website-4-hsla { color: hsla(0, 0, 75, 1); }
+.Portfolio-Website-5-hsla { color: hsla(0, 0, 5, 1); }
+

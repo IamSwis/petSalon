@@ -7,7 +7,7 @@ let salon={
         zip:"20001"
     },
 
-    pets:[
+    pets:[ // array to accumulate pet names
         {
             name:"Zeus",
             age:"25",
