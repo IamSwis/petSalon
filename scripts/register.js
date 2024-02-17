@@ -1,56 +1,97 @@
-let salon={
-    name:"The fasion pet",
-    phone:"999-999-9999",
-    address:{
-        street:"Palm",
-        number:"262-k",
-        zip:"20001"
-    },
-
-    pets:[ // array to accumulate pet names
-        {
-            name:"Zeus",
-            age:"25",
-            gender:"male",
-            Service:"Ear flush",
-            Breed:"Pitbull",
-            
-        
-        },
-        {
-            name:"micro",
-            age:"20",
-            gender:"male",
-            Service:"haircut",
-            Breed:"doodle",
-            
-        
-        },       
-        {
-            name:"kayla",
-            age:"21",
-            gender:"female",
-            Service:"Nails cut",
-            Breed:"poodle"
-        
-        }] //pet array
+let petID=0;
+//constructor
+function Pet(n,a,g,s){
+    this.name=n;
+    this.age=a;
+    this.gender=g;
+    this.services=s;
+    this.id=petID++;
 }
-function displayPetNames() {
-    let content = ""; // Initialize an empty string to accumulate pet names
-    for (let i = 0; i < salon.pets.length; i++) {
-        content += `<p>${salon.pets[i].name}</p>`; // This area isss used rto Append each pet's name within a paragraph tag
+
+function getE(id){
+    return document.getElementById(id);
+}
+//get elements from html
+let inputName= getE("txtName");
+let inputAge= getE("txtAge");
+let inputGender= getE("txtGender");
+let inputService= getE("txtService");
+
+function isValid(aPet){
+    let validation=true;
+    //clears the  elements if its the text ia not proper
+
+getE("txtName").classList.remove("alert-error");
+getE("txtAge").classList.remove("alert-error")
+if(aPet.name==""){
+    //if the pet is not valid function (no name or age not proper)
+    validation=false;
+    getE("txtName").classList.add("alert-error");
+}
+if(aPet.age==""){
+    validation=false;
+    getE("txtAge").classList.add("alert-error");
+}
+return validation;
+}
+
+//contstructor
+function showNotifications(msg,type){
+    getE("notifications").classList.remove("hidden");
+    getE("notifications").innerHTML= `<p class="${type}">${msg} </p>`;
+
+setTimeout(function(){
+    getE("notifications").classList.add("hidden");
+},3000);
+}
+function register(){
+    //1)getting value
+    //2) create the newPet using the constructor
+    let newPet = new Pet (inputName. value, inputAge. value, inputGender. value, inputService. value)
+    console.log(newPet);
+    
+    if(isValid(newPet)==true){
+        //3 push the newPet to the array
+        salon.pets.push(newPet);
+        //4) call the display function
+        displayPetCards();
+        //5 clears the input
+        inputName.value="";
+        inputAge.value="";
+        inputGender.value="";
+        inputService.value="";
+        showNotifications("Successful registration","alert-error");
+        }else{
+        showNotifications ("Not Proper Please fill out all the required fields","alert-error");
+        }
+}
+
+
+function deletePet(petID){
+    let deleteIndex;// to get the index of the array (position of the obj)
+    for(let i=0;i<salon.pets.length; i++){
+        let pet = salon.pets [i];
+        if(pet.id==petID){
+            deleteIndex=i; 
+            break;
+        }
     }
-    document.getElementById('pets').innerHTML = content; // Set the content once after accumulating all pet names
-    document.getElementById('totalPets').innerHTML = `Total=${salon.pets.length}`; // Corrected typo in length
+    getE(petID).remove();//remove from the HMTL
+    salon-pets.splice(deleteIndex,1);// remove the pet from the array
 }
+function init(){
+    //creating predefined obj
 
-function displayFooterInfo() {
-    document.getElementById("info").innerHTML = `
-    <p>Welcome to ${salon.name} located at ${salon.address.street} ${salon.address.number}, ZIP: ${salon.address.zip}</p>
-    `;
-}
+let pet1=new Pet ("Zeus", 70, "Male", "Grooming"); 
+let pet2=new Pet ("Titus", 60, "Male", "Vaccine"); 
+let pet3=new Pet ("Kyro", 50, "Male", "Nails"); 
+let pet4=new Pet ("Lola" , 70, "Female", "Grooming"); 
+salon.pets.push(pet1, pet2, pet3, pet4);
 
-// Remember to call displayPetNames somewhere in your code if you need to display the pet names on page load or on a specific event.
+// execution for the function
+displayPetCards ();
 displayPetNames();
 displayFooterInfo();
+};
 
+window.onload=init;// wait to render the HTML
